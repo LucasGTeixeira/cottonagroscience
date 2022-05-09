@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  cottonAgroscienceDB:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    container_name: cottonagroscience
+    environment:
+      MYSQL_ROOT_PASSWORD: letmein
+      MYSQL_DATABASE: cottonagroscience
+    ports:
+      - 3306:3306
