@@ -11,3 +11,5 @@ services:
       MYSQL_DATABASE: cottonagroscience
     ports:
       - 3306:3306
+    volumes:
+      - /var/lib/mysql/data
