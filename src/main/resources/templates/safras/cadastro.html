@@ -3,7 +3,9 @@
       xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
+
     <meta charset="UTF-8" />
+    <title>Cadastro de Fazendeiro</title>
  </head>
 <body>
     <section class="layout-content" layout:fragment="corpo">
@@ -18,7 +20,7 @@
                         </li>
                     </ul>
                 </div>
-                <a class="btn btn-primary btn-md" href="/harvests/listar" role="button">
+                <a class="btn btn-success btn-md" href="/harvests/listar" role="button">
                     <span class="oi oi-spreadsheet" title="Cadastro" aria-hidden="true"></span>
                     <span>Listar Safras</span>
                 </a>
@@ -29,87 +31,62 @@
             <div th:replace="fragments/alert :: alert"></div>
             <form th:action="${harvest.id == null} ? @{/harvests/salvar} : @{/harvests/editar}"
                   th:object="${harvest}" method="POST">
-
                 <div class="form-row">
-
                     <div class="form-group col-md-6">
+
                         <label for="name">Nome Safra</label>
                         <input type="text" class="form-control" id="name" placeholder="Nome" th:field="*{name}" required>
-                    </div>
-                    <div class="form-group col-md-6">
+
                         <label for="type">Tipo</label>
                         <input type="text" class="form-control" id="type" placeholder="Tipo" th:field="*{type}" required>
-                    </div>
-                    <div class="form-group col-md-6">
+
                         <label for="harvestBeginning">Data Inicial</label>
                         <input type="date" class="form-control" id="harvestBeginning" th:field="*{harvestBeginning}" required>
-                    </div>
 
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
                         <label for="harvestEnding">Data Final</label>
                         <input type="date" class="form-control" id="harvestEnding" th:field="*{harvestEnding}" required>
-                    </div>
-                    <div class="form-group col-md-6">
+
                         <label for="harvestTime">Tempo</label>
                         <input type="number" class="form-control" id="harvestTime" th:field="*{harvestTime}" required>
-                    </div>
-                    <div class="form-group col-md-6">
+
                         <label for="groundType">Solo</label>
                         <input type="text" class="form-control" id="groundType" th:field="*{groundType}" required>
-                    </div>
-                    <div class="form-group col-md-6">
+
                         <label for="destination">Destino</label>
                         <input type="text" class="form-control" id="destination" th:field="*{destination}" required>
-                    </div>
-                </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-6">
                         <label for="harvestHectare">Hectar</label>
                         <input type="number" class="form-control" id="harvestHectare" th:field="*{harvestHectare}" required>
-                    </div>
-                    <div class="form-group col-md-2">
+
                         <label for="period">Periodo</label>
                         <input type="text" class="form-control" id="period" th:field="*{period}" required>
-                    </div>
-                    <div class="form-group col-md-2">
+
                         <label for="address">Endereço</label>
                         <input type="text" class="form-control" id="address" th:field="*{address}" required>
-                    </div>
-                    <div class="form-group col-md-2">
+
                         <label for="fertilizers">Fertilizantes</label>
                         <input type="text" class="form-control" id="fertilizers" th:field="*{fertilizers}" required>
-                    </div>
-                </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-2">
                         <label for="pesticides">Pesticidas</label>
                         <input type="text" class="form-control" id="pesticides" th:field="*{pesticides}" required>
-                    </div>
-                    <div class="form-group col-md-2">
+
                         <label for="priceForEachBag">Preco por Saca</label>
                         <input type="number" class="form-control" id="priceForEachBag" th:field="*{priceForEachBag}" required>
-                    </div>
-                    <div class="form-group col-md-2">
+
                         <label for="bagQuantity">Quantidade de Sacas</label>
                         <input type="number" class="form-control" id="bagQuantity" th:field="*{bagQuantity}" required>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="profitMargin">Margem Lucro</label>
+
+                        <label for="profitMargin">Margem de Lucro</label>
                         <input type="number" class="form-control" id="profitMargin" th:field="*{profitMargin}" required>
+
+                        <label for="ownerId">Fazendeiro</label>
+                        <input type="number" class="form-control" id="ownerId" th:field="*{ownerId}" required>
                     </div>
-
                 </div>
-
                 <input type="hidden" id="id" th:field="*{id}"/>
                 <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
             </form>
         </div>
     </section>
-
 </body>
 </html>

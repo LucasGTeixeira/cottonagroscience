@@ -14,47 +14,39 @@ public class Harvest {
     private String name;
     @Column(nullable = false)
     private String type;
+    @Column(nullable = false)
     private LocalDate harvestBeginning;
+    @Column(nullable = false)
     private LocalDate harvestEnding;
+    @Column(nullable = false)
     private BigDecimal harvestTime;
+    @Column(nullable = false)
     private String groundType;
+    @Column(nullable = false)
     private String destination;
+    @Column(nullable = false)
     private BigDecimal harvestHectare;
+    @Column(nullable = false)
     private String period;
+    @Column(nullable = false)
     private String address;
+    @Column(nullable = false)
     private String fertilizers;
+    @Column(nullable = false)
     private String pesticides;
+    @Column(nullable = false)
     private BigDecimal priceForEachBag;
+    @Column(nullable = false)
     private Integer bagQuantity;
+    @Column(nullable = false)
     private BigDecimal profitMargin;
-
-    @ManyToOne
-    @JoinColumn(name = "farmer_fk_id", nullable = false)
-    private Farmer owner;
+    @Column(nullable = false)
+    private Integer ownerId;
 
     public Harvest() {
     }
 
-    public Harvest(String name, String type, LocalDate harvestBeginning, LocalDate harvestEnding, BigDecimal harvestTime, String groundType, String destination, BigDecimal harvestHectare, String period, String address, String fertilizers, String pesticides, BigDecimal priceForEachBag, Integer bagQuantity, BigDecimal profitMargin, Farmer owner) {
-        this.name = name;
-        this.type = type;
-        this.harvestBeginning = harvestBeginning;
-        this.harvestEnding = harvestEnding;
-        this.harvestTime = harvestTime;
-        this.groundType = groundType;
-        this.destination = destination;
-        this.harvestHectare = harvestHectare;
-        this.period = period;
-        this.address = address;
-        this.fertilizers = fertilizers;
-        this.pesticides = pesticides;
-        this.priceForEachBag = priceForEachBag;
-        this.bagQuantity = bagQuantity;
-        this.profitMargin = profitMargin;
-        this.owner = owner;
-    }
-
-    public Harvest(Long id, String name, String type, LocalDate harvestBeginning, LocalDate harvestEnding, BigDecimal harvestTime, String groundType, String destination, BigDecimal harvestHectare, String period, String address, String fertilizers, String pesticides, BigDecimal priceForEachBag, Integer bagQuantity, BigDecimal profitMargin, Farmer owner) {
+    public Harvest(Long id, String name, String type, LocalDate harvestBeginning, LocalDate harvestEnding, BigDecimal harvestTime, String groundType, String destination, BigDecimal harvestHectare, String period, String address, String fertilizers, String pesticides, BigDecimal priceForEachBag, Integer bagQuantity, BigDecimal profitMargin, Integer ownerId) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -71,7 +63,34 @@ public class Harvest {
         this.priceForEachBag = priceForEachBag;
         this.bagQuantity = bagQuantity;
         this.profitMargin = profitMargin;
-        this.owner = owner;
+        this.ownerId = ownerId;
+    }
+
+    public Harvest(String name, String type, LocalDate harvestBeginning, LocalDate harvestEnding, BigDecimal harvestTime, String groundType, String destination, BigDecimal harvestHectare, String period, String address, String fertilizers, String pesticides, BigDecimal priceForEachBag, Integer bagQuantity, BigDecimal profitMargin, Integer ownerId) {
+        this.name = name;
+        this.type = type;
+        this.harvestBeginning = harvestBeginning;
+        this.harvestEnding = harvestEnding;
+        this.harvestTime = harvestTime;
+        this.groundType = groundType;
+        this.destination = destination;
+        this.harvestHectare = harvestHectare;
+        this.period = period;
+        this.address = address;
+        this.fertilizers = fertilizers;
+        this.pesticides = pesticides;
+        this.priceForEachBag = priceForEachBag;
+        this.bagQuantity = bagQuantity;
+        this.profitMargin = profitMargin;
+        this.ownerId = ownerId;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
     public Long getId() {
@@ -202,14 +221,6 @@ public class Harvest {
         this.profitMargin = profitMargin;
     }
 
-    public Farmer getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Farmer owner) {
-        this.owner = owner;
-    }
-
     @Override
     public String toString() {
         return "Harvest{" +
@@ -229,7 +240,7 @@ public class Harvest {
                 ", priceForEachBag=" + priceForEachBag +
                 ", bagQuantity=" + bagQuantity +
                 ", profitMargin=" + profitMargin +
-                ", owner=" + owner +
+                ", owner=" + ownerId +
                 '}';
     }
 }
