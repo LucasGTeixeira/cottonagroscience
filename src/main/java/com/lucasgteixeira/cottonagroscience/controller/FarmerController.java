@@ -23,42 +23,41 @@ public class FarmerController {
         this.farmerService = farmerService;
     }
 
-
-    @GetMapping("/cadastrar")
-    public String cadastrar(Farmer farmer){
+    @GetMapping("/add")
+    public String addFarmer(Farmer farmer){
         return "/fazendeiro/cadastro";
     }
 
-    @PostMapping("/salvar")
-    public String salvar(Farmer farmer, RedirectAttributes attr){
+    @PostMapping("/save")
+    public String save(Farmer farmer, RedirectAttributes attr){
         farmerService.addNewFarmer(farmer);
         attr.addFlashAttribute("success","fazendeiro inserido com sucesso.");
-        return "redirect:/farmers/cadastrar";
+        return "fazendeiro/login";
     }
 
-    @GetMapping("/editar/{id}")
-    public String preEditar(@PathVariable("id") Long id, ModelMap model){
+    @GetMapping("/update/{id}")
+    public String preUpdate(@PathVariable("id") Long id, ModelMap model){
         model.addAttribute("farmer",farmerService.getFarmerById(id));
         return "/fazendeiro/cadastro";
     }
 
-    @PostMapping("/editar")
-    public String editar(Farmer farmer, RedirectAttributes attr){
+    @PostMapping("/update")
+    public String update(Farmer farmer, RedirectAttributes attr){
         farmerService.updateFarmer(farmer);
         attr.addFlashAttribute("success","fazendeiro editado com sucesso.");
-        return "redirect:/farmers/cadastrar";
+        return "redirect:/farmers/add";
     }
 
-    @GetMapping("/listar")
-    public String listar(ModelMap map){
+    @GetMapping("/listAll")
+    public String listFarmers(ModelMap map){
         map.addAttribute("farmers",farmerService.getFarmers());
         return "/fazendeiro/lista";
     }
 
-    @GetMapping("/excluir/{id}")
-    public String excluir(@PathVariable("id") Long id,ModelMap model){
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id,ModelMap model){
         farmerService.deleteFarmer(id);
         model.addAttribute("success","fazendeiro excluído com sucesso!!");
-        return listar(model);
+        return listFarmers(model);
     }
 }

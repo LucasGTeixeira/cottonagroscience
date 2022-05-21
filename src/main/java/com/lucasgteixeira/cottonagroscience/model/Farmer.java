@@ -11,16 +11,12 @@ public class Farmer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
     private String name;
     private LocalDate dob;
-    @Column(nullable = false)
     private String properties;
     private String address;
     private String phone;
-    @Column(nullable = false)
     private String email;
-    @Column(nullable = false)
     private String password;
 
     @OneToMany(mappedBy = "owner")
@@ -109,20 +105,6 @@ public class Farmer {
 
     public void setHarvests(List<Harvest> harvests) {
         this.harvests = harvests;
-    }
-
-    @Override
-    public String toString() {
-        return "Farmer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", dob=" + dob +
-                ", properties='" + properties + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", harvests=" + harvests +
-                '}';
     }
 
     @OneToMany(mappedBy = "owner")

@@ -20,9 +20,6 @@ public interface HarvestRepository extends JpaRepository<Harvest, Long> {
     Harvest findHarvestById(Long id);
 
     // filters TODO
-    //Optional<Harvest> findHarvestByName(String name);
-    //Optional<Harvest> findHarvestByProfitMargin(BigDecimal margin);
-
-    //select of session farmer TODO
-    //List<Harvest> findHarvestByOwner(Farmer farmer);
+    Harvest findHarvestByName(String name);
+    Harvest findHarvestByProfitMargin(BigDecimal margin);
 }

@@ -19,9 +19,8 @@ public class FarmerService {
         this.farmerRepository = farmerRepository;
     }
 
-    @Transactional(readOnly = true)
-    public List<Farmer> getFarmers(){
-        return farmerRepository.findAll();
+    public Farmer findFarmerByEmailAndId(String email, String password){
+        return farmerRepository.findFarmerByEmailAndPassword(email, password);
     }
 
     @Transactional(readOnly = false)
@@ -32,6 +31,11 @@ public class FarmerService {
         else{
             farmerRepository.save(farmer);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Farmer> getFarmers(){
+        return farmerRepository.findAll();
     }
 
     @Transactional(readOnly = true)

@@ -210,26 +210,4 @@ public class Harvest {
         this.owner = owner;
     }
 
-    @Override
-    public String toString() {
-        return "Harvest{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", harvestBeginning=" + harvestBeginning +
-                ", harvestEnding=" + harvestEnding +
-                ", harvestTime=" + harvestTime +
-                ", groundType='" + groundType + '\'' +
-                ", Destination='" + destination + '\'' +
-                ", harvestHectare=" + harvestHectare +
-                ", period='" + period + '\'' +
-                ", address='" + address + '\'' +
-                ", fertilizers='" + fertilizers + '\'' +
-                ", pesticides='" + pesticides + '\'' +
-                ", priceForEachBag=" + priceForEachBag +
-                ", bagQuantity=" + bagQuantity +
-                ", profitMargin=" + profitMargin +
-                ", owner=" + owner +
-                '}';
-    }
 }

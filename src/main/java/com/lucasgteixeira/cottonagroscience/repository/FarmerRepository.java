@@ -15,6 +15,5 @@ public interface FarmerRepository extends JpaRepository<Farmer, Integer> {
 
     Farmer findFarmerById (Long id);
 
-    // login TODO
-    //Optional<Farmer> findFarmerByEmailAndPassword(String email, String password);
+    Farmer findFarmerByEmailAndPassword(String email, String password);
 }
