@@ -2,6 +2,8 @@ package com.lucasgteixeira.cottonagroscience.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table
@@ -11,31 +13,20 @@ public class Farmer {
     private Long id;
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
     private LocalDate dob;
     @Column(nullable = false)
     private String properties;
-    @Column(nullable = false)
     private String address;
-    @Column(nullable = false)
     private String phone;
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
     private String password;
 
-    public Farmer(String name, LocalDate dob, String properties, String address, String phone, String email, String password) {
-        this.name = name;
-        this.dob = dob;
-        this.properties = properties;
-        this.address = address;
-        this.phone = phone;
-        this.email = email;
-        this.password = password;
-    }
+    @OneToMany(mappedBy = "owner")
+    private List<Harvest> harvests;
 
-    public Farmer(Long id, String name, LocalDate dob, String properties, String address, String phone, String email, String password) {
-        this.id = id;
+    public Farmer(String name, LocalDate dob, String properties, String address, String phone, String email, String password) {
         this.name = name;
         this.dob = dob;
         this.properties = properties;
@@ -112,6 +103,14 @@ public class Farmer {
         return email;
     }
 
+    public List<Harvest> getHarvests() {
+        return harvests;
+    }
+
+    public void setHarvests(List<Harvest> harvests) {
+        this.harvests = harvests;
+    }
+
     @Override
     public String toString() {
         return "Farmer{" +
@@ -122,7 +121,18 @@ public class Farmer {
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                ", harvests=" + harvests +
                 '}';
+    }
+
+    @OneToMany(mappedBy = "owner")
+    private Collection<Harvest> harvest;
+
+    public Collection<Harvest> getHarvest() {
+        return harvest;
+    }
+
+    public void setHarvest(Collection<Harvest> harvest) {
+        this.harvest = harvest;
     }
 }
