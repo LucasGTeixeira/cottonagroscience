@@ -255,16 +255,6 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
-table {
-  table-layout:fixed;
-}
-
-td {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-}
-
 section {
   padding: 60px 0;
   overflow: hidden;
