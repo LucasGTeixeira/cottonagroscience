@@ -19,7 +19,8 @@ public interface HarvestRepository extends JpaRepository<Harvest, Long> {
     @Transactional(readOnly = true)
     Harvest findHarvestById(Long id);
 
-    // filters TODO
+    @Transactional(readOnly = true)
     Harvest findHarvestByName(String name);
+    @Transactional(readOnly = true)
     Harvest findHarvestByProfitMargin(BigDecimal margin);
 }

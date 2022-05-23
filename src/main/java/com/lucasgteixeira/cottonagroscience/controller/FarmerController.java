@@ -25,20 +25,20 @@ public class FarmerController {
 
     @GetMapping("/add")
     public String addFarmer(Farmer farmer){
-        return "/fazendeiro/cadastro";
+        return "/fazendeiros/cadastro";
     }
 
     @PostMapping("/save")
     public String save(Farmer farmer, RedirectAttributes attr){
         farmerService.addNewFarmer(farmer);
         attr.addFlashAttribute("success","fazendeiro inserido com sucesso.");
-        return "fazendeiro/login";
+        return "redirect:/farmers/add";
     }
 
     @GetMapping("/update/{id}")
     public String preUpdate(@PathVariable("id") Long id, ModelMap model){
         model.addAttribute("farmer",farmerService.getFarmerById(id));
-        return "/fazendeiro/cadastro";
+        return "fazendeiros/cadastro";
     }
 
     @PostMapping("/update")
@@ -51,7 +51,7 @@ public class FarmerController {
     @GetMapping("/listAll")
     public String listFarmers(ModelMap map){
         map.addAttribute("farmers",farmerService.getFarmers());
-        return "/fazendeiro/lista";
+        return "fazendeiros/lista";
     }
 
     @GetMapping("/delete/{id}")

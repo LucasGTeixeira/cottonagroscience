@@ -19,11 +19,7 @@ public class FarmerService {
         this.farmerRepository = farmerRepository;
     }
 
-    public Farmer findFarmerByEmailAndId(String email, String password){
-        return farmerRepository.findFarmerByEmailAndPassword(email, password);
-    }
-
-    @Transactional(readOnly = false)
+    @Transactional
     public void addNewFarmer(Farmer farmer) {
         Optional<Farmer> farmerOptional = farmerRepository.findFarmerByEmail(farmer.getEmail());
         if(farmerOptional.isPresent())
@@ -43,12 +39,12 @@ public class FarmerService {
         return farmerRepository.findFarmerById(id);
     }
 
-    @Transactional(readOnly = false)
+    @Transactional
     public void updateFarmer(Farmer farmer){
         farmerRepository.save(farmer);
     }
 
-    @Transactional(readOnly = false)
+    @Transactional
     public void deleteFarmer(Long id){
         farmerRepository.deleteFarmerById(id);
     }

@@ -23,18 +23,15 @@ public class HarvestService {
 
     @Transactional
     public void addNewHarvest(Harvest harvest){
-        Optional<Harvest> harvestOptional = harvestRepository.findById(harvest.getId());
-        if(harvestOptional.isPresent())
-            throw new IllegalStateException("harvest already registered");
-        else{
-            harvestRepository.save(harvest);
-        }
+        harvestRepository.save(harvest);
     }
 
+    @Transactional(readOnly = true)
     public List<Harvest> getHarvests(){
         return harvestRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     public Harvest getHarvestById(Long id){
         return harvestRepository.findHarvestById(id);
     }
@@ -49,10 +46,12 @@ public class HarvestService {
         harvestRepository.deleteHarvestById(id);
     }
 
+    @Transactional(readOnly = true)
     public Harvest getHarvestByName(String name){
         return harvestRepository.findHarvestByName(name);
     }
 
+    @Transactional(readOnly = true)
     public Harvest getHarvestByProfitMargin(BigDecimal margin){
         return harvestRepository.findHarvestByProfitMargin(margin);
     }
