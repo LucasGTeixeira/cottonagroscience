@@ -1,5 +1,6 @@
 package com.lucasgteixeira.cottonagroscience.controller;
 
+import com.lucasgteixeira.cottonagroscience.model.Farmer;
 import com.lucasgteixeira.cottonagroscience.model.Harvest;
 import com.lucasgteixeira.cottonagroscience.model.Harvest;
 import com.lucasgteixeira.cottonagroscience.service.FarmerService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 
 @Controller
@@ -26,7 +28,9 @@ public class HarvestController {
     }
 
     @GetMapping("/add")
-    public String addNewHarvest(Harvest harvest){
+    public String addNewHarvest(Harvest harvest, ModelMap map){
+        List<Farmer> farmerList = farmerService.getFarmers();
+        map.addAttribute("farmers", farmerList);
         return "/safras/cadastro";
     }
 

@@ -16,13 +16,13 @@
 	                    <ul class="navbar-nav">
 	                        <li class="nav-item active">
 	                            <i class="oi oi-caret-right"></i>
-	                            <span>Cadastrar Funcionários</span>
+	                            <span>Cadastrar Safra</span>
 	                        </li>
 	                    </ul>
 	                </div>
-	                <a class="btn btn-primary btn-md" href="/funcionarios/listar" role="button">
+	                <a class="btn btn-secondary btn-md" href="/harvests/listAll" role="button">
 	                    <span class="oi oi-spreadsheet" title="Cadastro" aria-hidden="true"></span>
-	                    <span>Listar Funcionários</span>
+	                    <span>Listar Safras</span>
 	                </a>
 	            </nav>
 	        </div>
@@ -31,120 +31,120 @@
 	        
 	        	<div th:replace="fragments/alert"></div>
 	        
-	            <form th:action="${funcionario.id == null} ? @{/funcionarios/salvar} : @{/funcionarios/editar}" 
-	                  th:object="${funcionario}" method="POST">
+	            <form th:action="${harvest.id == null} ? @{/harvests/save} : @{/harvests/update}"
+	                  th:object="${harvest}" method="POST">
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
-	                        <label for="nome">Nome do Funcionário</label>
-	                        <input type="text" class="form-control" id="nome" placeholder="Nome Completo"
-	                               autofocus="autofocus" th:field="*{nome}"/>
-	                        <div class="invalid-feedback">
-	
-	                        </div>
+	                        <label for="nome">Nome Safra</label>
+	                        <input type="text" class="form-control" id="nome" placeholder="Safra001"
+	                               autofocus="autofocus" th:field="*{name}"/>
+	                        <div class="invalid-feedback"></div>
 	                    </div>
-	                    <div class="form-group col-md-6">
-	                        <label for="salario">Salário Bruto</label>
-	                        <input type="text" class="form-control" id="salario" data-mask="#.##0,00"
-	                               data-mask-reverse="true" th:field="*{salario}"/>
-	                        <div class="invalid-feedback">
-	
-	                        </div>
-	                    </div>
+
+						<div class="form-group col-md-6">
+							<label for="type">Tipo de Safra</label>
+							<input type="text" class="form-control" id="type" placeholder="Arroz"
+								   autofocus="autofocus" th:field="*{type}"/>
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="harvestBeginning">Inicio</label>
+								<input type="date" class="form-control" id="harvestBeginning"
+									   autofocus="autofocus" th:field="*{harvestBeginning}"/>
+								<div class="invalid-feedback"></div>
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="harvestEnding">Fim</label>
+								<input type="date" class="form-control" id="harvestEnding"
+									   autofocus="autofocus" th:field="*{harvestEnding}"/>
+								<div class="invalid-feedback"></div>
+							</div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="groundType">Solo</label>
+							<input type="text" class="form-control" id="groundType" placeholder="Terra Roxa"
+								   autofocus="autofocus" th:field="*{groundType}"/>
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="destination">Destino</label>
+							<input type="text" class="form-control" id="destination" placeholder="Paraná"
+								   autofocus="autofocus" th:field="*{destination}"/>
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="harvestHectare">Tamanho</label>
+							<input type="number" class="form-control" id="harvestHectare" placeholder="140"
+								   autofocus="autofocus" th:field="*{harvestHectare}"/>
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="period">Temporada</label>
+							<input type="text" class="form-control" id="period" placeholder="Verão"
+								   autofocus="autofocus" th:field="*{period}"/>
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="address">Endereço</label>
+							<input type="text" class="form-control" id="address" placeholder="Rua dos Bobos nº 0"
+								   autofocus="autofocus" th:field="*{address}"/>
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="fertilizers">Fertilizantes</label>
+							<input type="text" class="form-control" id="fertilizers" placeholder="Sulfato de Alumínio"
+								   autofocus="autofocus" th:field="*{fertilizers}"/>
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="priceForEachBag">Preço Saca</label>
+							<input type="number" class="form-control" id="priceForEachBag" placeholder="50"
+								   autofocus="autofocus" th:field="*{priceForEachBag}"/>
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="bagQuantity">Qnt Sacas</label>
+							<input type="number" class="form-control" id="bagQuantity" placeholder="800"
+								   autofocus="autofocus" th:field="*{bagQuantity}"/>
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="profitMargin">Lucro</label>
+							<input type="number" class="form-control" id="profitMargin" placeholder="300%"
+								   autofocus="autofocus" th:field="*{profitMargin}"/>
+							<div class="invalid-feedback"></div>
+						</div>
 	                </div>
+
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
-	                        <label for="dataEntrada">Data de Entrada</label>
-	                        <input type="date" class="form-control" id="dataEntrada" th:field="*{dataEntrada}"/>
-	                        <div class="invalid-feedback">
-	
-	                        </div>
-	                    </div>
-	                    <div class="form-group col-md-6">
-	                        <label for="dataSaida">Data de Saída</label>
-	                        <input type="date" class="form-control" id="dataSaida" th:field="*{dataSaida}"/>
-	                        <div class="invalid-feedback">
-	
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="form-row">
-	                    <div class="form-group col-md-6">
-	                        <label for="departamento">Cargo</label>
-	                        <select id="departamento" class="form-control" th:field="*{departamento}">
-	                            <option value="">Selecione...</option>
-	                            <option th:each="d : ${departamentos}" th:value="${d.id}" th:text="${d.nome}"></option>
-	                        </select>
-	                        <div class="invalid-feedback">
-	
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="form-row">
-	                    <div class="form-group col-md-6">
-	                        <label for="cidade">Cidade</label>
-	                        <input type="text" class="form-control" id="cidade" th:field="*{endereco.cidade}"/>
-	                        <div class="invalid-feedback">
-	
-	                        </div>
-	                    </div>
-	                    <div class="form-group col-md-6">
-	                        <label for="logradouro">Logradouro</label>
-	                        <input type="text" class="form-control" id="logradouro" 
-	                               placeholder="logradouro sem número" th:field="*{endereco.logradouro}"/>
-	                        <div class="invalid-feedback">
-	
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="form-row">
-	                    <div class="form-group col-md-6">
-	                        <label for="numero">Número</label>
-	                        <input type="text" class="form-control" id="numero" th:field="*{endereco.numero}"/>
-	                        <div class="invalid-feedback">
-	
-	                        </div>
-	                    </div>
-	                    <div class="form-group col-md-6">
-	                        <label for="complemento">Complemento</label>
-	                        <input type="text" class="form-control" id="complemento" 
-	                               placeholder="fundos, casa, AP. 102, .." th:field="*{endereco.complemento}"/>
-	                        <div class="invalid-feedback">
-	
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="form-row">
-	                    <div class="form-group col-md-6">
-	                        <label for="bairro">Bairro</label>
-	                        <input type="text" class="form-control" id="bairro" th:field="*{endereco.bairro}"/>
-	                        <div class="invalid-feedback">
-	
-	                        </div>
-	                    </div>
-	                    <div class="form-group col-md-4">
-	                        <label for="uf">UF</label>
-	                        <select id="uf" class="form-control" th:field="*{endereco.uf}">
-	                            <option value="">Selecione...</option>
-	                            <option th:each="uf : ${ufs}" th:value="${uf}" th:text="${uf.sigla}"></option>
-	                        </select>
-	                        <div class="invalid-feedback">
-	
-	                        </div>
-	                    </div>
-	                    <div class="form-group col-md-2">
-	                        <label for="cep">Cep</label>
-	                        <input type="text" class="form-control" id="cep" data-mask="00000-000" 
-	                               th:field="*{endereco.cep}"/>
-	                        <div class="invalid-feedback">
-	
-	                        </div>
+	                        <label for="farmer">Dono</label>
+	                        <select id="farmer" class="form-control" th:field="*{farmer}">
+								<th:block th:each="f : ${farmers}">
+									<option th:text="${f.name}" th:value="${f.id}" />
+								</th:block>
+							</select>
+							<div class="invalid-feedback"></div>
 	                    </div>
 	                </div>
 	                <input type="hidden" id="id" th:field="*{id}"/>
-					<input type="hidden" id="endereco.id" th:field="*{endereco.id}"/>
 	                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 	            </form>
 	        </div>
+			<br>
+			<br>
 	    </section>
 </body>
-</html>		
+</html>
