@@ -116,9 +116,9 @@
 		                        <td th:text="${h.period}"></td>
 		                        <td th:text="${h.fertilizers}"></td>
 		                        <td th:text="${h.profitMargin}"></td>
-		                        <td th:text="${h.farmer}"></td>
+		                        <td th:text="${h.farmer.name}"></td>
 		                        <td colspan="2">
-		                            <a class="btn btn-warning btn-sm" th:href="@{/harvests/update/{id} (id=${h.id}) }" role="button">
+		                            <a class="btn btn-warning btn-sm" th:href="@{/harvests/update/{id}/{farmer} (id=${h.id}, farmer=${h.farmer.name}) }" role="button">
 		                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 		                            </a>
 		                            <button th:id="${#strings.concat('btn_harvests/delete/', h.id) }" type="button" class="btn btn-danger btn-sm"

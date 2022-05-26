@@ -23,6 +23,7 @@ public class FarmerController {
         this.farmerService = farmerService;
     }
 
+
     @GetMapping("/add")
     public String addFarmer(Farmer farmer){
         return "/fazendeiros/cadastro";
@@ -32,7 +33,7 @@ public class FarmerController {
     public String save(Farmer farmer, RedirectAttributes attr){
         farmerService.addNewFarmer(farmer);
         attr.addFlashAttribute("success","fazendeiro inserido com sucesso.");
-        return "redirect:/farmers/add";
+        return "redirect:/";
     }
 
     @GetMapping("/update/{id}")

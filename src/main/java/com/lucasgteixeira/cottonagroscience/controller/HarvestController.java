@@ -2,7 +2,6 @@ package com.lucasgteixeira.cottonagroscience.controller;
 
 import com.lucasgteixeira.cottonagroscience.model.Farmer;
 import com.lucasgteixeira.cottonagroscience.model.Harvest;
-import com.lucasgteixeira.cottonagroscience.model.Harvest;
 import com.lucasgteixeira.cottonagroscience.service.FarmerService;
 import com.lucasgteixeira.cottonagroscience.service.HarvestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +40,12 @@ public class HarvestController {
         return "redirect:/harvests/add";
     }
 
-    @GetMapping("/update/{id}")
-    public String preUpdate(@PathVariable("id") Long id, ModelMap model){
-        model.addAttribute("harvest",harvestService.getHarvestById(id));
+    @GetMapping("/update/{id}/{farmer}")
+    public String preUpdate(@PathVariable("id") Long id,
+                            @PathVariable("farmer") String farmer,
+                            ModelMap model){
+        Farmer formFarmer = farmerService.findFarmerByName(farmer);
+        model.addAttribute("harvest",harvestService.getHarvestByIdAndFarmer(id, formFarmer));
         return "/safras/cadastro";
     }
 
@@ -67,15 +69,15 @@ public class HarvestController {
         return listAllHarvests(model);
     }
 
-    @GetMapping("filter/name")
-    public String getHarvestByName(@RequestParam("name") String name, ModelMap map){
-    map.addAttribute("harvests", harvestService.getHarvestByName(name));
-    return "/fazendeiro/lista";
+    @GetMapping("filter/destination")
+    public String getHarvestsByName(@RequestParam("destination") String destination, ModelMap map){
+        map.addAttribute("harvests", harvestService.getHarvestsByDestination(destination));
+        return "/fazendeiro/lista";
     }
 
     @GetMapping("filter/profitMargin")
     public String getHarvestByProfitMargin(@RequestParam("profitMargin")BigDecimal profitMargin, ModelMap map){
-        map.addAttribute("harvests", harvestService.getHarvestByProfitMargin(profitMargin));
+        map.addAttribute("harvests", harvestService.getHarvestsByProfitMargin(profitMargin));
         return "fazendeiro/lista";
     }
 

@@ -48,4 +48,16 @@ public class FarmerService {
     public void deleteFarmer(Long id){
         farmerRepository.deleteFarmerById(id);
     }
+
+    @Transactional(readOnly = true)
+    public Farmer loginAuthentification(String email, String password){
+        Optional<Farmer> farmerOptional = farmerRepository.findFarmerByEmailAndPassword(email, password);
+        return farmerOptional.orElse(null);
+    }
+
+    @Transactional(readOnly = true)
+    public Farmer findFarmerByName(String farmerName){
+        return farmerRepository.findFarmerByName(farmerName);
+    }
+
 }

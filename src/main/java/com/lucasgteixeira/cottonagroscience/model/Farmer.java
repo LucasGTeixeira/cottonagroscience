@@ -2,7 +2,6 @@ package com.lucasgteixeira.cottonagroscience.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,10 +18,29 @@ public class Farmer {
     private String properties;
     private String address;
     private String phone;
+    @Column(name = "email", nullable = false)
     private String email;
+    @Column(name = "password", nullable = true)
+    private String password;
+
+    //usado durante o mockdataconfig apenas
+    public Farmer(String name, LocalDate dob, String properties, String address, String phone, String email, String password, List<Harvest> harvests) {
+        this.name = name;
+        this.dob = dob;
+        this.properties = properties;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
+        this.harvests = harvests;
+    }
 
     @OneToMany(mappedBy = "farmer")
     private List<Harvest> harvests;
+
+    public Farmer() {
+
+    }
 
     public Long getId() {
         return id;
@@ -86,6 +104,14 @@ public class Farmer {
 
     public void setHarvests(List<Harvest> harvests) {
         this.harvests = harvests;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

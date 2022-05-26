@@ -14,4 +14,8 @@ public interface FarmerRepository extends JpaRepository<Farmer, Integer> {
     void deleteFarmerById(Long id);
 
     Farmer findFarmerById (Long id);
+
+    Optional<Farmer> findFarmerByEmailAndPassword(String email, String password);
+
+    Farmer findFarmerByName(String name);
 }
