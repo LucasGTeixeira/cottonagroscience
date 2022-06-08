@@ -13,7 +13,6 @@ public class Harvest {
     private Long id;
     @Column(nullable = false)
     private String name;
-
     private String type;
     private LocalDate harvestBeginning;
     private LocalDate harvestEnding;
