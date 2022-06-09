@@ -12,8 +12,17 @@ Caso não tenha docker na sua máquina, instale por aqui a versão mais recente:
 
 Partindo da raiz do projeto, rode os seguintes comandos:
 
+### Rodando com uma instância do MYSQL
+
 ```
-cd docker
+cd mySQL
 docker-compose up --build --remove-orphans -d
 
+```
+### Rodando com uma instância do PostgreSQL
+
+### Descomente as configurações relacionadas ao postgres no arquivo "application.properties" e comente as configurações do Mysql
+```
+cd PostgreSQL
+docker-compose up --build --remove-orphans -d
 ```
