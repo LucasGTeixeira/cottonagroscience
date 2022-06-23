@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Repository
-public interface FarmerRepository extends JpaRepository<Farmer, Integer> {
+public interface FarmerRepository extends JpaRepository<Farmer, Long> {
     Optional<Farmer> findFarmerByEmail(String email);
 
     void deleteFarmerById(Long id);

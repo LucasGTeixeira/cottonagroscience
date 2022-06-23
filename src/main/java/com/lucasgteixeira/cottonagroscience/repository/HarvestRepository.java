@@ -20,14 +20,12 @@ public interface HarvestRepository extends JpaRepository<Harvest, Long> {
     Harvest findHarvestById(Long id);
 
     @Transactional(readOnly = true)
-    Harvest findHarvestByName(String name);
+    List<Harvest> findHarvestsByProfitMarginAfter(BigDecimal profitMargin);
 
     @Transactional(readOnly = true)
-    List<Harvest> findHarvestsByProfitMargin(BigDecimal margin);
-
-    @Transactional(readOnly = true)
-    Harvest findHarvestByIdAndFarmer(Long id, Farmer farmer);
+    List<Harvest> findHarvestsByName(String name);
 
     @Transactional(readOnly = true)
     List<Harvest> findHarvestsByDestination(String destination);
+
 }

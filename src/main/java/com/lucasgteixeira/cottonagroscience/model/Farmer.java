@@ -113,17 +113,4 @@ public class Farmer {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Farmer farmer = (Farmer) o;
-        return Objects.equals(id, farmer.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

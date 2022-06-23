@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HarvestService {
@@ -46,22 +47,14 @@ public class HarvestService {
     }
 
     @Transactional(readOnly = true)
-    public Harvest getHarvestByName(String name){
-        return harvestRepository.findHarvestByName(name);
-    }
-
-    @Transactional(readOnly = true)
     public List<Harvest> getHarvestsByProfitMargin(BigDecimal margin){
-        return harvestRepository.findHarvestsByProfitMargin(margin);
-    }
-
-    @Transactional(readOnly = true)
-    public Harvest getHarvestByIdAndFarmer(Long id, Farmer farmer){
-        return harvestRepository.findHarvestByIdAndFarmer(id, farmer);
+        return harvestRepository.findHarvestsByProfitMarginAfter(margin);
     }
 
     @Transactional(readOnly = true)
     public List<Harvest> getHarvestsByDestination(String destination){
         return harvestRepository.findHarvestsByDestination(destination);
     }
+
+
 }
